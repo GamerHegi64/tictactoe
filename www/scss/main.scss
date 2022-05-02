@@ -81,6 +81,53 @@ body {
         position: relative;
 
         .field {
+          position: relative;
+          &.cross {
+            &::before {
+              content: '';
+              height: 10vw;
+              width: calc(10vw / 12);
+              background-color: $cross;
+              position: absolute;
+              left: 50%;
+              transform: rotate(45deg);
+            }
+            &::after {
+              content: '';
+              height: 10vw;
+              width: calc(10vw / 12);
+              background-color: $cross;
+              position: absolute;
+              left: 50%;
+              transform: rotate(-45deg);
+            }
+          }
+          &.circle {
+            &::before {
+              content: '';
+              height: calc(10vw / 1.2);
+              width: calc(10vw / 1.2);
+              background-color: $circle;
+              position: absolute;
+              border-radius: 50%;
+              top: calc(calc(10vw - calc(10vw / 1.2)) / 2);
+              left: calc(calc(10vw - calc(10vw / 1.2)) / 2);
+            }
+            &::after {
+              content: '';
+              height: calc(10vw / 1.55);
+              width: calc(10vw / 1.55);
+              background-color: $bg;
+              opacity: 0;
+              position: absolute;
+              border-radius: 50%;
+              top: calc(calc(10vw - calc(10vw / 1.55)) / 2);
+              left: calc(calc(10vw - calc(10vw / 1.55)) / 2);
+            }
+          }
+        }
+
+        .field {
           border: $text solid 2px;
           width: 100%;
           height: 100%;

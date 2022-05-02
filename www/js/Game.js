@@ -24,37 +24,39 @@ class Game {
   }
 
   click(event) {
-    var field = '00';
-    console.log(event.target);
+    var field = event.target.id;
+    console.log(event.target.id);
 
-    x = field[0];
-    y = field[1];
+    var x = parseInt(field[0]);
+    var y = parseInt(field[1]);
 
-    if (this.grid[x][y] === '1') {
+    if (this.grid[x][y] == '1') {
       if (this.cross_turn) {
         this.grid[x][y] = '2';
       } else {
         this.grid[x][y] = '0';
       }
+      this.cross_turn = !this.cross_turn;
     }
 
+    this.updateGrid();
   }
 
   updateGrid() {
-    for (x = 0; x < 3; x++) {
-      for (y = 0; y < 3; y++) {
+    for (var x = 0; x < 3; x++) {
+      for (var y = 0; y < 3; y++) { 
         switch (this.grid[x][y]) {
           case '0':
-            document.getElementById(toString(x)+toString(y)).classList.add('circle');
-            document.getElementById(toString(x)+toString(y)).classList.remove('cross');
+            document.getElementById(x.toString()+y.toString()).classList.add('circle');
+            document.getElementById(x.toString()+y.toString()).classList.remove('cross');
             break;
           case '1':
-            document.getElementById(toString(x)+toString(y)).classList.remove('circle');
-            document.getElementById(toString(x)+toString(y)).classList.remove('cross');
+            document.getElementById(x.toString()+y.toString()).classList.remove('circle');
+            document.getElementById(x.toString()+y.toString()).classList.remove('cross');
             break;
           case '2':
-            document.getElementById(toString(x)+toString(y)).classList.remove('circle');
-            document.getElementById(toString(x)+toString(y)).classList.add('cross');
+            document.getElementById(x.toString()+y.toString()).classList.remove('circle');
+            document.getElementById(x.toString()+y.toString()).classList.add('cross');
             break;
         }
       }
