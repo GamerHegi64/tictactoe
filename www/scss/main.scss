@@ -76,8 +76,8 @@ body {
 
       .game {
         display: grid;
-        grid-template-columns: repeat(3, 10vw);
-        grid-template-rows: repeat(3, 10vw);
+        grid-template-columns: repeat(3, 20vw);
+        grid-template-rows: repeat(3, 20vw);
         position: relative;
 
         .field {
@@ -85,8 +85,8 @@ body {
           &.cross {
             &::before {
               content: '';
-              height: 10vw;
-              width: calc(10vw / 12);
+              height: 20vw;
+              width: calc(20vw / 12);
               background-color: $cross;
               position: absolute;
               left: 50%;
@@ -94,8 +94,8 @@ body {
             }
             &::after {
               content: '';
-              height: 10vw;
-              width: calc(10vw / 12);
+              height: 20vw;
+              width: calc(20vw / 12);
               background-color: $cross;
               position: absolute;
               left: 50%;
@@ -105,24 +105,24 @@ body {
           &.circle {
             &::before {
               content: '';
-              height: calc(10vw / 1.2);
-              width: calc(10vw / 1.2);
+              height: calc(20vw / 1.2);
+              width: calc(20vw / 1.2);
               background-color: $circle;
               position: absolute;
               border-radius: 50%;
-              top: calc(calc(10vw - calc(10vw / 1.2)) / 2);
-              left: calc(calc(10vw - calc(10vw / 1.2)) / 2);
+              top: calc(calc(20vw - calc(20vw / 1.2)) / 2);
+              left: calc(calc(20vw - calc(20vw / 1.2)) / 2);
             }
             &::after {
               content: '';
-              height: calc(10vw / 1.55);
-              width: calc(10vw / 1.55);
+              height: calc(20vw / 1.55);
+              width: calc(20vw / 1.55);
               background-color: $bg;
               opacity: 0;
               position: absolute;
               border-radius: 50%;
-              top: calc(calc(10vw - calc(10vw / 1.55)) / 2);
-              left: calc(calc(10vw - calc(10vw / 1.55)) / 2);
+              top: calc(calc(20vw - calc(20vw / 1.55)) / 2);
+              left: calc(calc(20vw - calc(20vw / 1.55)) / 2);
             }
           }
         }

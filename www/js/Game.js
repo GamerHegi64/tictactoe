@@ -1,16 +1,16 @@
 class Game {
   grid = [];
   cross_turn;
-  game_div
+  game_div;
+  modal;
 
   /**
-   * 
    * @param {object} game_div 
    */
   constructor(
-    game_div
+    modal
   ) {
-
+    this.modal = modal;
   }
 
   start() {
