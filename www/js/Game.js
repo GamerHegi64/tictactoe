@@ -5,8 +5,12 @@ class Game {
   modal;
   game_stopped;
 
+  circleWinMessage = 'Circle has won this game.';
+  crossWinMessage = 'Cross has won this game.';
+  drawMessage = 'Draw. Nobody has won this game.';
+
   /**
-   * @param {object} game_div 
+   * @param Modal modal 
    */
   constructor(
     modal
@@ -44,7 +48,22 @@ class Game {
     }
 
     this.updateGrid();
-    console.log(this.checkGrid());
+    this.ceckWinner(this.checkGrid());
+  }
+
+  ceckWinner(winner) {
+    switch(winner) {
+      case 0:
+        this.modal.showMessage(this.circleWinMessage);
+        break;
+      case 2:
+        this.modal.showMessage(this.crossWinMessage);
+        break;
+      case 1:
+        if (this.gridComplete()) {
+          this.modal.showMessage(this.drawMessage);
+        }
+    }
   }
 
   updateGrid() {
@@ -52,16 +71,16 @@ class Game {
       for (var y = 0; y < 3; y++) { 
         switch (this.grid[x][y]) {
           case 0:
-            document.getElementById(x.toString()+y.toString()).classList.add('circle');
-            document.getElementById(x.toString()+y.toString()).classList.remove('cross');
+            $('#'+x.toString()+y.toString()+'>.circle').fadeIn(300);
+            $('#'+x.toString()+y.toString()+'>.cross').hide();
             break;
           case 1:
-            document.getElementById(x.toString()+y.toString()).classList.remove('circle');
-            document.getElementById(x.toString()+y.toString()).classList.remove('cross');
+            $('#'+x.toString()+y.toString()+'>.circle').hide();
+            $('#'+x.toString()+y.toString()+'>.cross').hide();
             break;
           case 2:
-            document.getElementById(x.toString()+y.toString()).classList.remove('circle');
-            document.getElementById(x.toString()+y.toString()).classList.add('cross');
+            $('#'+x.toString()+y.toString()+'>.circle').hide();
+            $('#'+x.toString()+y.toString()+'>.cross').fadeIn(300);
             break;
         }
       }
@@ -113,13 +132,13 @@ class Game {
   }
 
   gridComplete() {
-    this.grid.forEach(row => {
-      row.forEach(field => {
-        if (field == 1) {
+    for(var x = 0; x < 3; x++) {
+      for(var y = 0; y < 3; y++) {
+        if (this.grid[x][y] == 1) {
           return false;
         }
-      });
-    });
+      }
+    }
     this.game_stopped = true;
     return true;
   }

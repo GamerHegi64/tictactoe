@@ -5,6 +5,7 @@
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
     <link rel="stylesheet" href="/css/main.css">
     <title>Tic Tac Toe | Two Players</title>
+    <script src="/js/jquery.js"></script>
   </head>
   <body>
     <div class="header" >
@@ -36,11 +37,16 @@
     </div>
 
     <div class="modal" id="modal">
-      <span class="game-message">
-        
-      </span>
+      <div class="modal message-container">
+        <span class="modal message"></span>
+      </div>
+      <div class="modal btn-container">
+        <button class="modal btn btn-close" onclick="$('#modal').slideUp(200)" >Close</button>
+      </div>
     </div>
 
+    <script src="/js/setup_html.js"></script>
+    <script src="/js/Modal.js"></script>
     <script src="/js/Game.js"></script>
     <script src="/js/TwoGame.js"></script>
   </body>

@@ -2,15 +2,14 @@ class TwoGame extends Game {
 
 }
 
-game_div = document.getElementById('game');
-fields = game_div.childNodes;
-game = new TwoGame(game_div);
+$(document).ready(function(){
+  modal = new Modal();
+  game = new TwoGame(modal);
+  game.start();
 
-game.start();
-
-fields.forEach(field => {
-  field.addEventListener('click', function (event) {
+  $('.field').click(function(event){
     game.click(event);
   });
 });
+
  
