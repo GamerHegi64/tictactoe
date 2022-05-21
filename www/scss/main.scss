@@ -28,7 +28,7 @@ body {
 
   .btn {
     color: $color-one;
-    padding: 10px 15px;
+    padding: 20px 30px;
     border: $color-one 1px solid;
     border-radius: 8px;
     transition: background-color .3s, color .3s;
@@ -50,11 +50,17 @@ body {
     }
   }
 
+  .h1 {
+    font-size: 56px;
+    margin: 0;
+  }
+
   .header {
     width: 100%;
     display: grid;
     grid-template-columns: minmax(15px, 5%) auto minmax(15px, 5%);
-    
+    padding: 20px 0px;
+
     &-inner {
       grid-column: 2 / 3;
     }
@@ -68,6 +74,9 @@ body {
     &-inner {
       grid-column: 2 / 3;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       .start-btns {
         position: absolute;
@@ -76,16 +85,22 @@ body {
         right: 0;
         display: flex;
         justify-content: space-around;
+        font-size: 32px;
       }
 
       .game {
         display: grid;
-        grid-template-columns: repeat(3, 20vw);
-        grid-template-rows: repeat(3, 20vw);
+        grid-template-columns: repeat(3, 240px);
+        grid-template-rows: repeat(3, 240px);
         position: relative;
+        max-height: 70vh;
+        max-width: 95vw;
 
         .field {
           position: relative;
+          width: 100%;
+          height: 100%;
+
           .icon {
             width: 100%;
             height: 100%;
@@ -179,8 +194,12 @@ body {
     border-radius: 30px;
     background-color: $modal-bg;
     top: 20%;
-    left: 30%;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
     padding: 15px;
+    overflow-wrap: break-word;
 
     display: grid;
     grid-template-columns: 100%;
@@ -218,5 +237,80 @@ body {
       }
     }
 
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  body {
+    .h1 {
+      font-size: 38px;
+    }
+  }
+  body .content .content-inner {
+    .game {
+      grid-template-columns: repeat(3, 180px);
+      grid-template-rows: repeat(3, 180px);
+    }
+  }
+  body #modal {
+    .modal.btn-container {
+      .btn {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 567px) {
+  body {
+    .h1 {
+      font-size: 32px;
+    }
+  }
+  body .content .content-inner {
+    .game {
+      grid-template-columns: repeat(3, 130px);
+      grid-template-rows: repeat(3, 130px);
+    }
+  }
+  body #modal {
+    height: 300px;
+    grid-template-rows: auto 70px;
+    .modal.message-container {
+      font-size: 28px;
+    }
+    .modal.btn-container {
+      .btn {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 424px) {
+  body {
+    .h1 {
+      font-size: 32px;
+    }
+  }
+  body .content .content-inner {
+    .game {
+      grid-template-columns: repeat(3, 95px);
+      grid-template-rows: repeat(3, 95px);
+    }
+  }
+  body #modal {
+    height: 250px;
+    grid-template-rows: auto 40px;
+    .modal.message-container {
+      padding: 5px;
+      font-size: 24px;
+    }
+    .modal.btn-container {
+      .btn {
+        font-size: 16px;
+        padding: 10px 8%;
+      }
+    }
   }
 }

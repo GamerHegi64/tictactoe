@@ -25,4 +25,6 @@ class Modal {
     this.setMessage(message);
   }
 
+  
+
 }
