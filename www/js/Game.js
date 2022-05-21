@@ -25,8 +25,9 @@ class Game {
       [1,1,1],
       [1,1,1]
     ];
-    this.cross_turn = true
-    this.game_stopped = false
+    this.cross_turn = true;
+    this.game_stopped = false;
+    this.updateGrid();
   }
 
   click(event) {

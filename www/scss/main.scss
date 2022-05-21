@@ -28,17 +28,20 @@ body {
 
   .btn {
     color: $color-one;
-    padding: 20px 30px;
+    padding: 10px 30px;
     border: $color-one 1px solid;
     border-radius: 8px;
+    background-color: $bg;
     transition: background-color .3s, color .3s;
     transition: transform .3s !important;
+    font-size: 16px;
+    font-weight: 600;
 
     &:not(.disabled) {
       &:hover {
         background-color: $color-one;
         transition: background-color .2s;
-        color: #fff;
+        color: $bg;
         transform: scale(1.04);
       }
     }
@@ -88,10 +91,14 @@ body {
         font-size: 32px;
       }
 
+      .btn-list {
+        margin-bottom: 25px;
+      }
+
       .game {
         display: grid;
-        grid-template-columns: repeat(3, 240px);
-        grid-template-rows: repeat(3, 240px);
+        grid-template-columns: repeat(3, 200px);
+        grid-template-rows: repeat(3, 200px);
         position: relative;
         max-height: 70vh;
         max-width: 95vw;
@@ -309,7 +316,8 @@ body {
     .modal.btn-container {
       .btn {
         font-size: 16px;
-        padding: 10px 8%;
+        padding: 10px 8%
+        ;
       }
     }
   }
