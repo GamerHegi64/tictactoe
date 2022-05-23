@@ -19,13 +19,15 @@
       <div class="content-inner">
         
         <div class="btn-list">
-          <div data-cecked="0" class="custom-radio box">
-            <span class="custom-radio circle"><span></span></span>
-            <span class="custom-radio label">Cross</span>
-          </div>
-          <div data-cecked="0" class="custom-radio box">
-            <span class="custom-radio circle"><span></span></span>
-            <span class="custom-radio label">Circle</span>
+          <div class="player-box">
+            <div data-group="player" data-value="2" class="custom-radio box checked">
+              <span class="custom-radio circle"><span></span></span>
+              <span class="custom-radio label">Cross</span>
+            </div>
+            <div data-group="player" data-value="0" class="custom-radio box">
+              <span class="custom-radio circle"><span></span></span>
+              <span class="custom-radio label">Circle</span>
+            </div>
           </div>
           <button id="btn-new-game" class="btn">New Game</button>
         </div>
@@ -60,6 +62,6 @@
     <script src="/js/setup_html.js"></script>
     <script src="/js/Modal.js"></script>
     <script src="/js/Game.js"></script>
-    <script src="/js/TwoGame.js"></script>
+    <script src="/js/SingleGame.js"></script>
   </body>
 </html>

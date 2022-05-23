@@ -7,5 +7,16 @@ $(document).ready(function() {
 
   $('span.icon').hide();
 
-  $('.custom-radio.box').data('checked', '4')
+  $('.custom-radio.box[data-group=player]').click(function(event) {
+    target = event.target;
+    while(!target.hasAttribute('data-group')) {
+      target = target.parentElement;
+    }
+    player_radios = $('.custom-radio.box[data-group=player]');
+    for (var i = 0; i < player_radios.length; i++) {
+      player_radios[i].classList.remove('checked');
+    }
+    target.classList.add('checked');
+  });
+
 });

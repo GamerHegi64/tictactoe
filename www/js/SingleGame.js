@@ -1,9 +1,14 @@
 class SingleGame extends Game {
 
-  player = 1;
+  player = 2;
+  bot = 0;
 
-  start() {
-    
+  beforeStart() {
+    this.player = $('.player-box .custom-radio.box.checked').data('value');
+    this.bot = 0;
+    if (this.player == 0) {
+      this.bot = 2;
+    }
   }
 
   click (event) {
@@ -24,3 +29,19 @@ class SingleGame extends Game {
   }
 
 }
+
+$(document).ready(function(){
+  modal = new Modal();
+  game = new SingleGame(modal);
+  game.beforeStart();
+  game.start();
+
+  $('.field').click(function(event){
+    game.click(event);
+  });
+
+  $('#btn-new-game').click(function(){
+    game.beforeStart();
+    game.start();
+  });
+});
