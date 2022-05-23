@@ -30,28 +30,6 @@ class Game {
     this.updateGrid();
   }
 
-  click(event) {
-    if (this.game_stopped) {
-      return;
-    }
-    var field = event.target.id;
-
-    var x = parseInt(field[0]);
-    var y = parseInt(field[1]);
-
-    if (this.grid[x][y] == 1) {
-      if (this.cross_turn) {
-        this.grid[x][y] = 2;
-      } else {
-        this.grid[x][y] = 0;
-      }
-      this.cross_turn = !this.cross_turn;
-    }
-
-    this.updateGrid();
-    this.ceckWinner(this.checkGrid());
-  }
-
   ceckWinner(winner) {
     switch(winner) {
       case 0:

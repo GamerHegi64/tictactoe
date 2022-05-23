@@ -29,13 +29,18 @@ body {
   .btn {
     color: $color-one;
     padding: 10px 30px;
-    border: $color-one 1px solid;
+    border: $color-one 2px solid;
     border-radius: 8px;
     background-color: $bg;
     transition: background-color .3s, color .3s;
     transition: transform .3s !important;
     font-size: 16px;
     font-weight: 600;
+
+    &:focus-visible {
+      outline: none;
+      border: $color-one 3px solid;
+    }
 
     &:not(.disabled) {
       &:hover {
@@ -56,6 +61,17 @@ body {
   .h1 {
     font-size: 56px;
     margin: 0;
+  }
+
+  .select {
+    color: $color-one;
+    padding: 10px 30px;
+    border: $color-one 2px solid;
+    border-radius: 8px;
+    background-color: $bg;
+    font-size: 16px;
+    font-weight: 600;
+    // appearance: none;
   }
 
   .header {
@@ -92,7 +108,12 @@ body {
       }
 
       .btn-list {
+        min-width: 40%;
+        max-width: 90%;
         margin-bottom: 25px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
       }
 
       .game {
