@@ -6,4 +6,6 @@ $(document).ready(function() {
   $('.field').append(circle);
 
   $('span.icon').hide();
+
+  $('.custom-radio.box').data('checked', '4')
 });
