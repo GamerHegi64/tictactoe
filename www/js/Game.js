@@ -30,7 +30,7 @@ class Game {
     this.updateGrid();
   }
 
-  ceckWinner(winner) {
+  checkWinner(winner) {
     switch(winner) {
       case 0:
         this.modal.showMessage(this.circleWinMessage);

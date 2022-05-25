@@ -18,7 +18,7 @@ class TwoGame extends Game {
     }
 
     this.updateGrid();
-    this.ceckWinner(this.checkGrid());
+    this.checkWinner(this.checkGrid());
   }
 }
 
