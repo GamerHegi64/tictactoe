@@ -8,6 +8,10 @@ class TwoGame extends Game {
     var x = parseInt(field[0]);
     var y = parseInt(field[1]);
 
+    if (isNaN(x) || isNaN(y)) {
+      return;
+    }
+
     if (this.grid[x][y] == 1) {
       if (this.cross_turn) {
         this.grid[x][y] = 2;

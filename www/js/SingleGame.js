@@ -51,6 +51,10 @@ class SingleGame extends Game {
       var x = parseInt(field[0]);
       var y = parseInt(field[1]);
 
+      if (isNaN(x) || isNaN(y)) {
+        return;
+      }
+
       if (this.grid[x][y] == 1) {
         
         this.grid[x][y] = this.player;
@@ -66,10 +70,10 @@ class SingleGame extends Game {
   }
 
   minWo() {
-    if (this.checkGrid() == 0) {
-      return 0;
+    if (this.checkGrid() != 1 || this.gridComplete()) {
+      return this.checkGrid();
     }
-    var minvalue = 999;
+    var minvalue = 3;
     
     for (var x = 0; x < 3; x++) {
       for (var y = 0; y < 3; y++) {
@@ -91,10 +95,10 @@ class SingleGame extends Game {
   }
 
   min() {
-    if (this.checkGrid() == 0) {
-      return 0
+    if (this.checkGrid() != 1 || this.gridComplete()) {
+      return this.checkGrid();
     }
-    var minvalue = 999;
+    var minvalue = 3;
     
     for (var x = 0; x < 3; x++) {
       for (var y = 0; y < 3; y++) {
@@ -114,10 +118,10 @@ class SingleGame extends Game {
   }
 
   maxWo() {
-    if (this.checkGrid() == 2) {
-      return 2
+    if (this.checkGrid() != 1 || this.gridComplete()) {
+      return this.checkGrid();
     }
-    var maxvalue = -999;
+    var maxvalue = -1;
     
     for (var x = 0; x < 3; x++) {
       for (var y = 0; y < 3; y++) {
@@ -139,10 +143,10 @@ class SingleGame extends Game {
   }
 
   max() {
-    if (this.checkGrid() == 2) {
-      return 2
+    if (this.checkGrid() != 1 || this.gridComplete()) {
+      return this.checkGrid();
     }
-    var maxvalue = -999;
+    var maxvalue = -1;
     
     for (var x = 0; x < 3; x++) {
       for (var y = 0; y < 3; y++) {
