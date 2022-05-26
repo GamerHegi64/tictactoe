@@ -5,8 +5,11 @@ class SingleGame extends Game {
   botx;
   boty;
   playerturn;
+  maxbotdepth;
 
   beforeStart() {
+    this.maxbotdepth = 4;
+
     this.player = $('.player-box .custom-radio.box.checked').data('value');
     this.bot = 0;
     this.playerturn = true;
@@ -94,12 +97,13 @@ class SingleGame extends Game {
     return minvalue;
   }
 
-  min() {
-    if (this.checkGrid() != 1 || this.gridComplete()) {
+  min(depth = this.maxbotdepth) {
+    if (this.checkGrid() != 1 || this.gridComplete() || depth <= 0) {
       return this.checkGrid();
     }
     var minvalue = 3;
-    
+    depth--;
+
     for (var x = 0; x < 3; x++) {
       for (var y = 0; y < 3; y++) {
         if (this.grid[x][y] == 1) {
@@ -142,8 +146,8 @@ class SingleGame extends Game {
     return maxvalue;
   }
 
-  max() {
-    if (this.checkGrid() != 1 || this.gridComplete()) {
+  max(depth = this.maxbotdepth) {
+    if (this.checkGrid() != 1 || this.gridComplete() || depth <= 0) {
       return this.checkGrid();
     }
     var maxvalue = -1;
