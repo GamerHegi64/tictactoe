@@ -4,11 +4,13 @@ class SingleGame extends Game {
   bot = 0;
   botx;
   boty;
+  botfields = [];
   playerturn;
   maxbotdepth;
 
   beforeStart() {
-    this.maxbotdepth = 4;
+    this.maxbotdepth = 3;
+    this.botfields = [];
 
     this.player = $('.player-box .custom-radio.box.checked').data('value');
     this.bot = 0;
@@ -29,6 +31,14 @@ class SingleGame extends Game {
     if (this.game_stopped) {
       return;
     }
+
+    this.maxbotdepth = parseInt(this.getFreeFields() / 2.5);
+    if (this.maxbotdepth < 1) {
+      this.maxbotdepth = 1; 
+    }
+
+    console.log(this.maxbotdepth);
+    
     switch (this.bot) {
       case 0: 
         this.minWo();
@@ -37,6 +47,10 @@ class SingleGame extends Game {
         this.maxWo();
         break;
     }
+    console.log(this.botfields);
+    var field = this.botfields[Math.floor(Math.random()*this.botfields.length)]
+    this.botx = field.x;
+    this.boty = field.y;
     this.grid[this.botx][this.boty] = this.bot;
     this.playerturn = true;
     this.cross_turn = !this.cross_turn;
@@ -83,10 +97,12 @@ class SingleGame extends Game {
         if (this.grid[x][y] == 1) {
           this.grid[x][y] = 0;
           var value = this.max();
-          if (value < minvalue) {
+          if (value == minvalue) {
+            this.botfields.push({'x':x, 'y':y});
+          } else if (value < minvalue) {
             minvalue = value;
-            this.botx = x;
-            this.boty = y;
+            this.botfields = [];
+            this.botfields.push({'x':x, 'y':y});
           }
           this.grid[x][y] = 1;
           this.game_stopped = false;
@@ -108,7 +124,7 @@ class SingleGame extends Game {
       for (var y = 0; y < 3; y++) {
         if (this.grid[x][y] == 1) {
           this.grid[x][y] = 0;
-          var value = this.max();
+          var value = this.max(depth);
           if (value < minvalue) {
             minvalue = value;
           }
@@ -132,10 +148,12 @@ class SingleGame extends Game {
         if (this.grid[x][y] == 1) {
           this.grid[x][y] = 2;
           var value = this.min();
-          if (value > maxvalue) {
+          if (value == maxvalue) {
+            this.botfields.push({'x':x, 'y':y});
+          } else if (value > maxvalue) {
             maxvalue = value;
-            this.botx = x;
-            this.boty = y;
+            this.botfields = [];
+            this.botfields.push({'x':x, 'y':y});
           }
           this.grid[x][y] = 1;
           this.game_stopped = false;
@@ -156,7 +174,7 @@ class SingleGame extends Game {
       for (var y = 0; y < 3; y++) {
         if (this.grid[x][y] == 1) {
           this.grid[x][y] = 2;
-          var value = this.min();
+          var value = this.min(depth);
           if (value > maxvalue) {
             maxvalue = value;
           }
@@ -167,6 +185,20 @@ class SingleGame extends Game {
     }
 
     return maxvalue;
+  }
+
+  getFreeFields() {
+    var freeFields = 0;
+
+    for (var x = 0; x < 3; x++) {
+      for (var y = 0; y < 3; y++) {
+        if (this.grid[x][y] == 1) {
+          freeFields++;
+        }
+      } 
+    }
+
+    return freeFields;
   }
 
 }
